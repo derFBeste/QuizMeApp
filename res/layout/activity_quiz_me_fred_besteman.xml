@@ -15,16 +15,17 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/qst_label"
+        android:id="@+id/qstLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Question:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/qst_text"
+        android:id="@+id/qstText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="\n \n \n \n"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <RelativeLayout
@@ -32,7 +33,7 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/answer_label"
+            android:id="@+id/answerLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -40,28 +41,19 @@
             android:text="Answer:"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <RadioGroup
-            android:id="@+id/radioGroup1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="false"
-            android:layout_toRightOf="@+id/answer_label"
-            android:orientation="horizontal" >
-        </RadioGroup>
-
         <RadioButton
-            android:id="@+id/radio_yes"
+            android:id="@+id/radioYes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginRight="16dp"
-            android:layout_toLeftOf="@+id/radio_no"
-            android:checked="true"
+            android:layout_toLeftOf="@+id/radioNo"
+            android:checked="false"
             android:focusable="false"
             android:text="Yes" />
 
         <RadioButton
-            android:id="@+id/radio_no"
+            android:id="@+id/radioNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -89,13 +81,6 @@
             android:text="Next" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/qst_response_box"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.92"
-        android:orientation="vertical" >
 
-    </LinearLayout>
 
 </LinearLayout>

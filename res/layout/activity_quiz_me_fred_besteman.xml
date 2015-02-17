@@ -41,6 +41,7 @@
             android:text="Answer:"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
+	    
         <RadioButton
             android:id="@+id/radioYes"
             android:layout_width="wrap_content"
@@ -60,6 +61,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginRight="20dp"
             android:text="No" />
+        
+        
     </RelativeLayout>
 
     <LinearLayout

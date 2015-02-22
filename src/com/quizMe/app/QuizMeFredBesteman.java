@@ -1,3 +1,14 @@
+/**
+ * Fred Besteman
+ * CIS 2818
+ * Jackson
+ * Application 2: QuizMeYourName
+ * 
+ *Main method and event handlers.
+ */
+
+
+
 package com.quizMe.app;
 
 import java.util.Random;
@@ -50,35 +61,39 @@ public class QuizMeFredBesteman extends Activity {
 		submit = (Button) findViewById(R.id.submit);
 		next = (Button) findViewById(R.id.next);
 
-		//next.performClick();
 		NextButtonListener nextListener = new NextButtonListener();	
 		next.setOnClickListener(nextListener);
-		
-
+		next.performClick();
 	}
 
 	class NextButtonListener implements OnClickListener{
 		@Override
 		public void onClick(View v) {
-
-			// Defines behavior for the Next button
+			
+			//the following code generates a random index and sets a random question to be displayed
 			Random random = new Random();
 			number = random.nextInt(questions.length);
 			question.setText(questions[number]);
+			
 			question.setBackgroundColor(Color.WHITE);
 			
+			next.setEnabled(false); //greys out the next button
+			submit.setEnabled(true); //greys out the submit button
+			
+			//creates and sets a submit button listener
 			SubmitButtonListener submitListener = new SubmitButtonListener();
 			submit.setOnClickListener(submitListener);
 			
-			//yesButton.setChecked(false);
-			//noButton.setChecked(false);
 			question.setBackgroundColor(Color.WHITE);
 		}
 	}
 	
 	class SubmitButtonListener implements OnClickListener{
+		
 		@Override
 		public void onClick(View v){
+			
+				//The following lines of code determine whether an answer is correct.
 				boolean guess;
 				if (yesButton.isChecked())
 					guess = true;
@@ -95,8 +110,10 @@ public class QuizMeFredBesteman extends Activity {
 				{
 					Toast.makeText(getApplicationContext(), "Wrong answer...", Toast.LENGTH_SHORT).show();
 					question.setBackgroundColor(Color.RED);					
-				}			
-	}
+				}
+				next.setEnabled(true);
+				submit.setEnabled(false);
+		}
 	}
 				
-	}
+}

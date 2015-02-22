@@ -76,7 +76,7 @@ public class QuizMeFredBesteman extends Activity {
 		}
 	}
 	
-	class SubmitButtonListener extends Activity implements OnClickListener{
+	class SubmitButtonListener implements OnClickListener{
 		@Override
 		public void onClick(View v){
 				boolean guess;
@@ -88,12 +88,12 @@ public class QuizMeFredBesteman extends Activity {
 				boolean answer = key[number];
 				if (answer == guess)
 				{
-					Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "Correct!", Toast.LENGTH_SHORT).show();
 					question.setBackgroundColor(Color.GREEN);
 				}
 				else
 				{
-					//Toast.makeText(this, "Wrong answer...", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "Wrong answer...", Toast.LENGTH_SHORT).show();
 					question.setBackgroundColor(Color.RED);					
 				}			
 	}

@@ -14,7 +14,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class QuizMeFredBesteman extends Activity implements OnClickListener {
+public class QuizMeFredBesteman extends Activity {
 
 	int number;
 
@@ -50,46 +50,53 @@ public class QuizMeFredBesteman extends Activity implements OnClickListener {
 		submit = (Button) findViewById(R.id.submit);
 		next = (Button) findViewById(R.id.next);
 
-		next.setOnClickListener(this);
-		submit.setOnClickListener(this);
+		//next.performClick();
+		NextButtonListener nextListener = new NextButtonListener();	
+		next.setOnClickListener(nextListener);
+		
 
 	}
 
-	@Override
-	public void onClick(View v) {
+	class NextButtonListener implements OnClickListener{
+		@Override
+		public void onClick(View v) {
 
-		// Defines behavior for the Next button
-		Random random = new Random();
-		number = random.nextInt(questions.length);
-		question.setText(questions[number]);
-		question.setBackgroundColor(Color.WHITE);
-
-
-		// Defines behavior for the Submit button
-		if (submit.isPressed()) {
+			// Defines behavior for the Next button
+			Random random = new Random();
+			number = random.nextInt(questions.length);
+			question.setText(questions[number]);
+			question.setBackgroundColor(Color.WHITE);
 			
-			boolean guess;
-			if (yesButton.isChecked())
-				guess = true;
-			else
-				guess = false;
-
-			boolean answer = key[number];
-			if (answer == guess)
-			{
-				Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
-				question.setBackgroundColor(Color.GREEN);
-			}
-			else
-			{
-				Toast.makeText(this, "Wrong answer...", Toast.LENGTH_SHORT).show();
-				question.setBackgroundColor(Color.RED);
-				
-			}
+			SubmitButtonListener submitListener = new SubmitButtonListener();
+			submit.setOnClickListener(submitListener);
 			
-			yesButton.setChecked(false);
-			noButton.setChecked(false);
+			//yesButton.setChecked(false);
+			//noButton.setChecked(false);
+			question.setBackgroundColor(Color.WHITE);
 		}
 	}
+	
+	class SubmitButtonListener extends Activity implements OnClickListener{
+		@Override
+		public void onClick(View v){
+				boolean guess;
+				if (yesButton.isChecked())
+					guess = true;
+				else
+					guess = false;
 
-}
+				boolean answer = key[number];
+				if (answer == guess)
+				{
+					Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
+					question.setBackgroundColor(Color.GREEN);
+				}
+				else
+				{
+					//Toast.makeText(this, "Wrong answer...", Toast.LENGTH_SHORT).show();
+					question.setBackgroundColor(Color.RED);					
+				}			
+	}
+	}
+				
+	}
